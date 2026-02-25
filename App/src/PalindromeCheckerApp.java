@@ -367,6 +367,50 @@ static void runUC10() {
 }
 
 }
+/**
+ * UC11 Object-Oriented Service
+ */
 
+static void runUC11() {
+
+    PalindromeService service=new PalindromeService();
+
+    String input="madam";
+
+    boolean result=service.checkPalindrome(input);
+
+    System.out.println("UC11: "+result);
+
+}
+
+}
+
+/**
+ * PalindromeService Class
+ * Encapsulates palindrome logic
+ */
+
+class PalindromeService {
+
+    public boolean checkPalindrome(String input) {
+
+        int start=0;
+        int end=input.length()-1;
+
+        while(start<end) {
+
+            if(input.charAt(start)!=input.charAt(end))
+                return false;
+
+            start++;
+            end--;
+
+        }
+
+        return true;
+
+    }
+
+}
 
 
