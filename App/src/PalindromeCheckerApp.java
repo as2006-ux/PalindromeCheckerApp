@@ -204,3 +204,33 @@ public static void runUC6() {
     System.out.println("Is Palindrome: " + isPalindrome + "\n");
 }
 }
+/**
+ * UC7: Deque-Based Optimized Palindrome Checker
+ */
+public static void runUC7() {
+
+    System.out.println("---- UC7: Deque-Based Optimized Check ----");
+
+    String input = "madam";
+    Deque<Character> deque = new ArrayDeque<>();
+
+    // Insert characters into deque
+    for (int i = 0; i < input.length(); i++) {
+        deque.addLast(input.charAt(i));
+    }
+
+    boolean isPalindrome = true;
+
+    // Compare front and rear
+    while (deque.size() > 1) {
+        if (!deque.removeFirst().equals(deque.removeLast())) {
+            isPalindrome = false;
+            break;
+        }
+    }
+
+    System.out.println("Input: " + input);
+    System.out.println("Is Palindrome: " + isPalindrome + "\n");
+}
+}
+
