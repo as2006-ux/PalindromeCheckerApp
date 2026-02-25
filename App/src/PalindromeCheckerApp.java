@@ -172,4 +172,35 @@ public static void runUC5() {
     System.out.println("Is Palindrome: " + isPalindrome + "\n");
 }
 }
+/**
+ * --------------------------------------------------------
+ * UC6: Queue + Stack Based Palindrome Check
+ * --------------------------------------------------------
+ */
+public static void runUC6() {
 
+    System.out.println("---- UC6: Queue + Stack Based Palindrome Check ----");
+
+    String input = "madam";
+
+    Stack<Character> stack = new Stack<>();
+    Queue<Character> queue = new LinkedList<>();
+
+    for (int i = 0; i < input.length(); i++) {
+        stack.push(input.charAt(i));    // LIFO
+        queue.add(input.charAt(i));     // FIFO
+    }
+
+    boolean isPalindrome = true;
+
+    while (!stack.isEmpty()) {
+        if (!stack.pop().equals(queue.remove())) {
+            isPalindrome = false;
+            break;
+        }
+    }
+
+    System.out.println("Input: " + input);
+    System.out.println("Is Palindrome: " + isPalindrome + "\n");
+}
+}
