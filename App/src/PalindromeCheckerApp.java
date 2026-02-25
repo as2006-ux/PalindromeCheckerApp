@@ -492,5 +492,58 @@ class DequeStrategy implements PalindromeStrategy {
     }
 
 }
+/**
+ * Use Case 13: Performance Comparison
+ *
+ * Measures execution time of palindrome checking.
+ */
+
+public class PalindromeCheckerApp {
+
+    public static void main(String[] args) {
+
+        String input = "level";
+
+        // Start time
+        long startTime = System.nanoTime();
+
+        boolean isPalindrome = checkPalindrome(input);
+
+        // End time
+        long endTime = System.nanoTime();
+
+        long executionTime = endTime - startTime;
+
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome : " + isPalindrome);
+        System.out.println("Execution Time : " + executionTime + " ns");
+
+    }
+
+    public static boolean checkPalindrome(String input) {
+
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < input.length(); i++) {
+
+            stack.push(input.charAt(i));
+
+        }
+
+        for (int i = 0; i < input.length(); i++) {
+
+            if (input.charAt(i) != stack.pop()) {
+
+                return false;
+
+            }
+
+        }
+
+        return true;
+
+    }
+
+}
 
 
