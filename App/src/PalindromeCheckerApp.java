@@ -343,5 +343,30 @@ public static boolean checkRecursive(String s,int start,int end) {
 }
 
 }
+/**
+ * UC10 Case Insensitive & Space Ignored
+ */
+
+static void runUC10() {
+
+    String input="A man a plan a canal Panama";
+
+    String normalized=input
+            .replaceAll("[^a-zA-Z]","")
+            .toLowerCase();
+
+    boolean result=true;
+
+    for(int i=0;i<normalized.length()/2;i++)
+        if(normalized.charAt(i)!=normalized.charAt(normalized.length()-1-i))
+            result=false;
+
+    System.out.println("\nUC10 Input : "+input);
+    System.out.println("UC10 Result : "+result);
+
+}
+
+}
+
 
 
