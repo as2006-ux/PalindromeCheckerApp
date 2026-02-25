@@ -316,5 +316,32 @@ public static void runUC8() {
 }
 
 }
+/**
+ * UC9 Recursive Palindrome Checker
+ */
+
+public static void runUC9() {
+
+    String input="madam";
+
+    boolean result=checkRecursive(input,0,input.length()-1);
+
+    System.out.println("UC9 Result: "+result);
+
+}
+
+public static boolean checkRecursive(String s,int start,int end) {
+
+    if(start>=end)
+        return true;
+
+    if(s.charAt(start)!=s.charAt(end))
+        return false;
+
+    return checkRecursive(s,start+1,end-1);
+
+}
+
+}
 
 
