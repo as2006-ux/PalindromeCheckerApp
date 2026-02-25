@@ -1,57 +1,141 @@
 /**
- * ==========================================================
- * MAIN CLASS – UseCase3PalindromeCheckerApp
- * ==========================================================
+ * --------------------------------------------------------
+ * MAIN CLASS - PalindromeCheckerApp
+ * --------------------------------------------------------
  *
- * Use Case 3: Reverse String Based Palindrome Check
+ * Project: Palindrome Checker App
  *
  * Description:
- * This class checks whether a string is a palindrome
- * by reversing the string and comparing it with
- * the original value.
+ * This application demonstrates multiple approaches
+ * to checking whether a string is a palindrome.
  *
- * At this stage, the application:
- * - Iterates the string in reverse order
- * - Builds a reversed version
- * - Compares original and reversed strings
- * - Displays the validation result
+ * The following Use Cases are implemented:
  *
- * This introduces transformation-based validation.
+ * UC1 - Application Entry & Welcome Message
+ * UC2 - Hardcoded Palindrome Check (Half Comparison)
+ * UC3 - Palindrome Check Using String Reverse
+ * UC4 - Character Array Based Palindrome Check
  *
- * @author Developer
- * @version 3.0
+ * This project strengthens understanding of:
+ * - String handling
+ * - Loops
+ * - Conditional statements
+ * - Character arrays
+ * - Two-pointer technique
+ *
+ * @author YourName
+ * @version 4.0
  */
 
-import java.util.Scanner;
-
-public class UseCase3PalindromeCheckerApp {
+public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC3.
-     *
-     * @param args Command-line arguments
+     * --------------------------------------------------------
+     * MAIN METHOD
+     * --------------------------------------------------------
+     * Entry point of the application.
      */
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("======================================");
+        System.out.println("   PALINDROME CHECKER APPLICATION");
+        System.out.println("   Version : 4.0");
+        System.out.println("======================================\n");
 
-        System.out.println("Enter a string:");
-        String input = scanner.nextLine();
+        runUC1();
+        runUC2();
+        runUC3();
+        runUC4();
+    }
 
+    /**
+     * --------------------------------------------------------
+     * UC1: Application Entry & Welcome Message
+     * --------------------------------------------------------
+     */
+    public static void runUC1() {
+
+        System.out.println("---- UC1: Welcome Page ----");
+        System.out.println("System initialized successfully.\n");
+    }
+
+    /**
+     * --------------------------------------------------------
+     * UC2: Hardcoded Palindrome Check
+     * --------------------------------------------------------
+     * Logic: Compare first half of string with second half.
+     */
+    public static void runUC2() {
+
+        System.out.println("---- UC2: Half-Length Comparison ----");
+
+        String input = "madam";
+        boolean isPalindrome = true;
+
+        for (int i = 0; i < input.length() / 2; i++) {
+            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome: " + isPalindrome + "\n");
+    }
+
+    /**
+     * --------------------------------------------------------
+     * UC3: Palindrome Check Using String Reverse
+     * --------------------------------------------------------
+     * Logic: Reverse string and compare using equals().
+     */
+    public static void runUC3() {
+
+        System.out.println("---- UC3: Reverse String Method ----");
+
+        String original = "madam";
         String reversed = "";
 
-        // Iterate from the last character to the first
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed = reversed + input.charAt(i);
+        // Reverse using for loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        // Compare original and reversed strings
-        if (input.equals(reversed)) {
-            System.out.println("The given string is a palindrome.");
-        } else {
-            System.out.println("The given string is not a palindrome.");
+        System.out.println("Original: " + original);
+        System.out.println("Reversed: " + reversed);
+        System.out.println("Is Palindrome: " + original.equals(reversed) + "\n");
+    }
+
+    /**
+     * --------------------------------------------------------
+     * UC4: Character Array Based Palindrome Check
+     * --------------------------------------------------------
+     * Logic: Convert to char[] and use two-pointer approach.
+     */
+    public static void runUC4() {
+
+        System.out.println("---- UC4: Char Array Two-Pointer ----");
+
+        String input = "madam";
+
+        // Convert string to character array
+        char[] characters = input.toCharArray();
+
+        int start = 0;
+        int end = characters.length - 1;
+        boolean isPalindrome = true;
+
+        while (start < end) {
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        scanner.close();
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome: " + isPalindrome + "\n");
     }
 }
+
